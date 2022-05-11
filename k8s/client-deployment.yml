@@ -3,18 +3,17 @@ kind: Deployment
 metadata:
   name: client-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
-    matchLabels:  
-      component: web
+    matchLabels:
+      component: client
   template:
     metadata:
-      labels: 
-        component: web
-    spec: 
+      labels:
+        component: client
+    spec:
       containers:
-        - name: client
-          image: smerkviladze/multi-client-k8s-gh
+        - name: worker
+          image: smerkviladze/multi-client-k8s
           ports:
             - containerPort: 3000
-
