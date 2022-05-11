@@ -13,7 +13,7 @@ spec:
         component: web
     spec: 
       containers:
-        - name: clinet
+        - name: client
           image: smerkviladze/multi-client-k8s-gh
           ports:
             - containerPort: 3000
