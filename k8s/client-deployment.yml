@@ -14,7 +14,7 @@ spec:
     spec: 
       containers:
         - name: clinet
-          image: stephengrider/multi-client
+          image: smerkviladze/multi-client-k8s-gh
           ports:
             - containerPort: 3000
 
