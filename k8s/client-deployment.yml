@@ -13,7 +13,7 @@ spec:
         component: web
     spec:
       containers:
-        - name: worker
+        - name: client
           image: smerkviladze/multi-client-k8s
           ports:
             - containerPort: 3000

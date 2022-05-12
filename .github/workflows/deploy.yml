@@ -13,11 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
  
-      - name: Test
-        run: |-
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -t smerkviladze/react-test -f ./client/Dockerfile.dev ./client
-          docker run -e CI=true smerkviladze/react-test npm test
+      # - name: Test
+      #   run: |-
+      #     docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      #     docker build -t smerkviladze/react-test -f ./client/Dockerfile.dev ./client
+      #     docker run -e CI=true smerkviladze/react-test npm test
  
       - name: Set Service Key
         uses: 'google-github-actions/auth@v0'
@@ -44,7 +44,6 @@ jobs:
           docker build -t smerkviladze/multi-client-k8s:latest -t smerkviladze/multi-client-k8s:${{ env.SHA }} -f ./client/Dockerfile ./client
           docker build -t smerkviladze/multi-server-k8s:latest -t smerkviladze/multi-server-k8s:${{ env.SHA }} -f ./server/Dockerfile ./server
           docker build -t smerkviladze/multi-worker-k8s:latest -t smerkviladze/multi-worker-k8s:${{ env.SHA }} -f ./worker/Dockerfile ./worker
- 
       - name: Push
         run: |-
           docker push smerkviladze/multi-client-k8s:latest
