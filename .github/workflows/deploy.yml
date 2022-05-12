@@ -46,6 +46,8 @@ jobs:
           docker build -t smerkviladze/multi-worker-k8s:latest -t smerkviladze/multi-worker-k8s:${{ env.SHA }} -f ./worker/Dockerfile ./worker
       - name: Push
         run: |-
+          docker logout
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push smerkviladze/multi-client-k8s:latest
           docker push smerkviladze/multi-server-k8s:latest
           docker push smerkviladze/multi-worker-k8s:latest
